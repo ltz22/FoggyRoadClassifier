@@ -42,7 +42,7 @@ def load_dataset(data_dir):
     for label_name, label_val in class_map.items():
         folder = os.path.join(data_dir, label_name)
         for filename in os.listdir(folder):
-            if filename.lower().endswith((".jpg", ".jpeg")):
+            if filename.lower().endswith((".jpg", ".jpeg", ".png")):
                 path = os.path.join(folder, filename)
                 features = extract_feature(path)
                 if features:
