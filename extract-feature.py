@@ -11,3 +11,26 @@ def extract_feature(path):
     # Convert to grayscale and HSV
     gray = cv2.cvtColor(img_resized, cv2.COLOR_BGR2GRAY)
     hsv = cv2.cvtColor(img_resized, cv2.COLOR_BGR2HSV)
+
+    # Feature 1: brightness mean (foggy = high)
+    brightness_mean = np.mean(hsv[:, :, 2])
+
+    #Feature 2: brightness standard deviation (foggy = uniform brightness)
+    brightness_std = np.std(hsv[:, :, 2])
+
+    # Feature 3: contrast (foggy = low contrast)
+    contrast = gray.std()
+
+    # Feature 4: saturation mean (foggy images have low saturation)
+    saturation_mean = np.mean(hsv[:, :, 1])
+
+    # Feature 5: dark channel (foggy images have high dark channel)
+    min_channel = np.min(img_resized, axis=2)
+    dark_channel = np.mean(min_channel)
+
+    # Feature 6: edge density (foggy images have fewer sharp edges)
+    edges = cv2.Canny(gray, 50, 150)
+    edge_density = np.sum(edges > 0) / edges.size
+
+    return [brightness_mean, brightness_std, contrast,
+            saturation_mean, dark_channel, edge_density]
