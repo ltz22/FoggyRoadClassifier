@@ -6,6 +6,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pickle
 
 # Load data
 # print("Loading training data...")
@@ -38,3 +39,9 @@ plt.xlabel("Predicted")
 plt.tight_layout()
 plt.savefig("confusion_matrix.png")
 plt.show()
+
+# Save model
+with open("model.pkl", "wb") as f:
+    pickle.dump((model, scaler), f)
+
+print("\nModel saved to model.pkl")
