@@ -34,3 +34,19 @@ def extract_feature(path):
 
     return [brightness_mean, brightness_std, contrast,
             saturation_mean, dark_channel, edge_density]
+
+def load_dataset(data_dir):
+    X, y = [], []
+    class_map = {"clear": 0, "foggy": 1}
+
+    for label_name, label_val in class_map.items():
+        folder = os.path.join(data_dir, label_name)
+        for filename in os.listdir(folder):
+            if filename.lower().endswith((".jpg", ".jpeg")):
+                path = os.path.join(folder, filename)
+                features = extract_feature(path)
+                if features:
+                    X.append(features)
+                    y.append(label_val)
+
+    return np.array(X), np.array(y)
