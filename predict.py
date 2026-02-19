@@ -17,7 +17,7 @@ def predict(image_path):
     fog_prob = model.predict_proba(features_scaled)[0][1]  # probability of foggy class
     intensity = get_fog_intensity(fog_prob)
 
-    if predict == 1:
+    if prediction == 1:
         label = "Foggy"
     else:
         label = "Clear"
@@ -36,3 +36,5 @@ def get_fog_intensity(fog_probability):
         return "Moderate"
     else:
         return "Heavy"
+
+predict("data/test/clear/clear (1817).jpg")
