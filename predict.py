@@ -37,4 +37,4 @@ def get_fog_intensity(fog_probability):
     else:
         return "Heavy"
 
-predict("data/test/clear/clear (1817).jpg")
+# predict("data/test/clear/Fog1 (282).png")
