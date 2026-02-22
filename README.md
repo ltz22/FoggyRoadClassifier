@@ -3,4 +3,4 @@
 - Click on URL
 - Click the image area to upload a road-scene image
 - Analysis of the image will appear on the right
-- Ctrl + C in the terminal to kill the Gradio server
+- ```Ctrl + C``` in the terminal to kill the Gradio server
