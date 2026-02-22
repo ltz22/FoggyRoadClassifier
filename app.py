@@ -78,7 +78,3 @@ with gr.Blocks(title="Road visibility Classifier") as app:
     )
 
 app.launch()
-
-key = input("press q to quit the app")
-if key == "q":
-    app.quit()
